@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { defaultUser } from 'src/utils';
 import { IUser } from '../interfaces/iuser';
 
 @Injectable({
@@ -16,15 +15,27 @@ export class UserManagerService {
     }
   }
 
+/*********** Private methods *********** */
   private getPositionFromId(id:number){
     const list=this.getUsers();
     return list.findIndex((x)=>x.id===id);
+  }
+
+/************* Public methods *********** */
+  public defaultUser(): IUser{
+    return {
+        id:-1,
+        username:"",
+        email:"",
+        password:"",
+        pic:""
+    };
   }
   public getUsers():Array<IUser>{
     return JSON.parse(localStorage.getItem("users") || "[]");
   }
   public existsUser(username:string):boolean{
-    return this.getUser(username)===defaultUser();
+    return this.getUser(username)===this.defaultUser();
   }
   public existsEmail(email:string):boolean{
     let currentList=this.getUsers();
@@ -40,21 +51,21 @@ export class UserManagerService {
     if(user.length!==0){
       return user[0];
     } else{
-      return defaultUser();
+      return this.defaultUser();
     }
   }
   public newUser(username:string,email:string,password:string){
     if(username!=="" && email!=="" && password!==""){
-      let currentList=this.getUsers();
+      //let currentList=this.getUsers();
       let newUser:IUser={
-        id:currentList.length,
+        id:this.users.length,
         username:username,
         email:email,
         password:password,
         pic:""
       }
-      currentList.push(newUser);
-      this.updateUsers(currentList);
+      this.users.push(newUser);
+      this.updateUsers(this.users);
     }
   }
 

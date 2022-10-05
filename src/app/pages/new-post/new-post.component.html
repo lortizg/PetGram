@@ -1,0 +1,6 @@
+<p>new-post works!</p>
+<form [formGroup]="newPost" (ngSubmit)="publish()">
+    <input type="text" formControlName="description" placeholder="Say something about your pic!">
+    <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
+    <button type="submit">Publish</button>
+</form>

@@ -1,16 +1,5 @@
-import { IUser } from "./app/interfaces/iuser";
 import { IPost } from "./app/interfaces/ipost";
 import { IStory } from "./app/interfaces/istory";
-
-export const defaultUser= (): IUser => {
-    return {
-        id:-1,
-        username:"",
-        email:"",
-        password:"",
-        pic:""
-    };
-}
 
 export const defaultPost= (): IPost => {
     return {

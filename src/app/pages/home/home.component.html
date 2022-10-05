@@ -1,5 +1,14 @@
 <div id="homeContainer">
     <p>{{user.username}}</p>
     <button (click)="logout()">Cerrar sesión</button>
+    <a routerLink="/post">
+        <mat-icon>add_circle_outline</mat-icon>
+    </a>
+    <ol class="list">
+        <li *ngFor="let post of posts">
+            <img [src]="post.img">
+            <p>{{post.description}}</p>
+        </li>
+    </ol>
 </div> 
 <app-footer></app-footer>
