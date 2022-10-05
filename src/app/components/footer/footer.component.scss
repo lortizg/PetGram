@@ -1,13 +1,9 @@
-#main{
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  height: 100%;
-}
 #container{
-    display: flex;
-    justify-content: space-around;
-    background-color: brown;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: brown;
 }
 img{
     width:20%;
