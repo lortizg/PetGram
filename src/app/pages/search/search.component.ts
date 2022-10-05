@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/app/interfaces/iuser';
+import { StorageManagerService } from 'src/app/services/storage-manager.service';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  userList:Array<IUser>=[];
+  filteredString:string='';
+  constructor(private storageManager:StorageManagerService) {  }
 
   ngOnInit(): void {
+   this.userList=this.storageManager.getUsers();
   }
-
 }

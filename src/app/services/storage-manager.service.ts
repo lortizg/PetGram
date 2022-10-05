@@ -43,7 +43,7 @@ export class StorageManagerService {
     if(username!=="" && email!=="" && password!==""){
       let currentList=this.getUsers();
       let newUser:IUser={
-        id:currentList.length-1,
+        id:currentList.length,
         username:username,
         email:email,
         password:password,

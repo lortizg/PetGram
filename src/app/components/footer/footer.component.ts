@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/app/interfaces/iuser';
+import { SessionManagerService } from 'src/app/services/session-manager.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  currentUser:IUser;
+  constructor(sessionManager:SessionManagerService) {
+    this.currentUser=sessionManager.getUser();
+  }
 
   ngOnInit(): void {
   }

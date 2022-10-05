@@ -2,9 +2,13 @@
 <ng-content></ng-content>
 
 <div id="container">
-    
-    <img src="https://www.freepnglogos.com/uploads/photography-logo-png/photography-logo-aperture-photographer-photograph-vector-graphic-38.png">
-    <img src="https://www.freepnglogos.com/uploads/photography-logo-png/photography-logo-aperture-photographer-photograph-vector-graphic-38.png">
-    <img src="https://www.freepnglogos.com/uploads/photography-logo-png/photography-logo-aperture-photographer-photograph-vector-graphic-38.png">
-
+    <a [routerLink]="['/search']">
+        <img routerLink='/search' src="https://www.freepnglogos.com/uploads/photography-logo-png/photography-logo-aperture-photographer-photograph-vector-graphic-38.png">
+    </a>
+    <a [routerLink]="['']">
+        <img routerLink='' src="https://www.freepnglogos.com/uploads/photography-logo-png/photography-logo-aperture-photographer-photograph-vector-graphic-38.png">
+    </a>
+    <a [routerLink]="['/profile/'+currentUser.username]">
+        <img routerLink='/profile' src="https://www.freepnglogos.com/uploads/photography-logo-png/photography-logo-aperture-photographer-photograph-vector-graphic-38.png">
+    </a>
 </div>

@@ -27,4 +27,7 @@ export class SessionManagerService {
   getPic():string{
     return this.getUser().pic;
   }
+  clearSession(){
+    sessionStorage.clear();
+  }
 }
