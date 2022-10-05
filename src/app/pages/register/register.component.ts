@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     let email=this.registerForm.value.email || "";
     let password=this.registerForm.value.password || "";
     let rPassword=this.registerForm.value.rPassword || "";
-    let user=this.userManager.getUser(username || "");
+    let user=this.userManager.getUserFromUsername(username || "");
     if(user.username===""){
       if(!this.userManager.existsEmail(email || "")){
         if(password===rPassword){

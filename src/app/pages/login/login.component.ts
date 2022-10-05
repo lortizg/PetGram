@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     }
   }
   login(){
-    let user=this.userManager.getUser(this.loginForm.value.username || "");
+    let user=this.userManager.getUserFromUsername(this.loginForm.value.username || "");
     if(user!==this.userManager.defaultUser() && this.loginForm.value.password===user.password){
       this.sessionManager.setUser(user);
       console.log("sesion iniciada correctamente");

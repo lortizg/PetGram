@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
+import { UserManagerService } from './user-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { IPost } from '../interfaces/ipost';
 export class PostManagerService {
 
   posts:Array<IPost>;
-  constructor() {
+  constructor(private userManager:UserManagerService) {
     if(localStorage["posts"]!==undefined){
       this.posts=this.getPosts();
     } else{
@@ -39,5 +40,8 @@ export class PostManagerService {
     }
     this.posts.push(newPost);
     this.updatePosts(this.posts);
+  }
+  public getPublisher(post:IPost){
+    let users=this.userManager.getUsers();
   }
 }

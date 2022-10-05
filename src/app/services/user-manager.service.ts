@@ -28,14 +28,17 @@ export class UserManagerService {
         username:"",
         email:"",
         password:"",
-        pic:""
+        pic:this.defaultIcon()
     };
+  }
+  public defaultIcon():string{
+    return 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png';
   }
   public getUsers():Array<IUser>{
     return JSON.parse(localStorage.getItem("users") || "[]");
   }
   public existsUser(username:string):boolean{
-    return this.getUser(username)===this.defaultUser();
+    return this.getUserFromUsername(username)===this.defaultUser();
   }
   public existsEmail(email:string):boolean{
     let currentList=this.getUsers();
@@ -45,15 +48,23 @@ export class UserManagerService {
   public updateUsers(newUsers:Array<IUser>):void{
     localStorage.setItem("users",JSON.stringify(newUsers));
   }
-  public getUser(username:string):IUser{
-    let currentList=this.getUsers();
-    let user=currentList.filter((x)=>x.username===username);
+  public getUserFromUsername(username:string):IUser{
+    let user=this.users.filter((x)=>x.username===username);
     if(user.length!==0){
       return user[0];
     } else{
       return this.defaultUser();
     }
   }
+  public getUserFromId(id:number):IUser{
+    let user=this.users.filter((x)=>x.id===id);
+    if(user.length!==0){
+      return user[0];
+    } else{
+      return this.defaultUser();
+    }
+  }
+
   public newUser(username:string,email:string,password:string){
     if(username!=="" && email!=="" && password!==""){
       //let currentList=this.getUsers();
@@ -62,7 +73,7 @@ export class UserManagerService {
         username:username,
         email:email,
         password:password,
-        pic:""
+        pic:this.defaultIcon()
       }
       this.users.push(newUser);
       this.updateUsers(this.users);

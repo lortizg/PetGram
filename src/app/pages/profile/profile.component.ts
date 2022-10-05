@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
 
   user:IUser;
   constructor(private userManager:UserManagerService, private route:ActivatedRoute,private fileUploader:UploadFileService) {
-    this.user=userManager.getUser(this.route.snapshot.paramMap.get('username')||"");
+    this.user=userManager.getUserFromUsername(this.route.snapshot.paramMap.get('username')||"");
   }
 
   ngOnInit(): void {
