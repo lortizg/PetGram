@@ -19,6 +19,14 @@ export class StorageManagerService {
   public getUsers():Array<IUser>{
     return JSON.parse(localStorage.getItem("users") || "[]");
   }
+  public existsUser(username:string):boolean{
+    return this.getUser(username)===defaultUser();
+  }
+  public existsEmail(email:string):boolean{
+    let currentList=this.getUsers();
+    let emails=currentList.filter((x)=>x.email===email);
+    return emails.length!==0;
+  }
   public updateUsers(newUsers:Array<IUser>):void{
     localStorage.setItem("users",JSON.stringify(newUsers));
   }
@@ -29,6 +37,20 @@ export class StorageManagerService {
       return user[0];
     } else{
       return defaultUser();
+    }
+  }
+  public newUser(username:string,email:string,password:string){
+    if(username!=="" && email!=="" && password!==""){
+      let currentList=this.getUsers();
+      let newUser:IUser={
+        id:currentList.length-1,
+        username:username,
+        email:email,
+        password:password,
+        pic:""
+      }
+      currentList.push(newUser);
+      this.updateUsers(currentList);
     }
   }
 }
