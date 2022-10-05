@@ -7,23 +7,12 @@ import { IUser } from '../interfaces/iuser';
 export class SessionManagerService {
 
   users:Array<IUser>=[];
-  currentUser:IUser;
-  constructor() { 
-    this.users.push({
-      id:1,
-      username:"prueba",
-      email:"prueba@prueba.es",
-      password:"1234",
-      pic:"hola"
-    });
-    localStorage.setItem("users",JSON.stringify(this.users));
-
-    this.currentUser=this.users[0];
-    sessionStorage.setItem("user",JSON.stringify(this.currentUser));
+  constructor() {   }
+  setUser(user:IUser):void{
+    sessionStorage.setItem("user",JSON.stringify(user));
   }
-
   getUser():IUser{
-    return JSON.parse(sessionStorage.getItem("user") || "");
+    return JSON.parse(sessionStorage.getItem("user") || "[]");
   }
 
   getUsername():string{
