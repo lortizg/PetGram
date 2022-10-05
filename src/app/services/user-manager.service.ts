@@ -5,7 +5,7 @@ import { IUser } from '../interfaces/iuser';
 @Injectable({
   providedIn: 'root'
 })
-export class StorageManagerService {
+export class UserManagerService {
 
   users:Array<IUser>;
   constructor() {
@@ -16,6 +16,10 @@ export class StorageManagerService {
     }
   }
 
+  private getPositionFromId(id:number){
+    const list=this.getUsers();
+    return list.findIndex((x)=>x.id===id);
+  }
   public getUsers():Array<IUser>{
     return JSON.parse(localStorage.getItem("users") || "[]");
   }
@@ -52,5 +56,11 @@ export class StorageManagerService {
       currentList.push(newUser);
       this.updateUsers(currentList);
     }
+  }
+
+  public editPic(id:number,pic:string){
+    let currentList=this.getUsers();
+    currentList[this.getPositionFromId(id)].pic=pic;
+    this.updateUsers(currentList);
   }
 }

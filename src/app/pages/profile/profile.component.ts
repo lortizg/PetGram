@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/app/interfaces/iuser';
+import { ActivatedRoute } from '@angular/router';
+import { UploadFileService } from 'src/app/services/upload-file.service';
+import { UserManagerService } from 'src/app/services/user-manager.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user:IUser;
+  constructor(private userManager:UserManagerService, private route:ActivatedRoute,private fileUploader:UploadFileService) {
+    this.user=userManager.getUser(this.route.snapshot.paramMap.get('username')||"");
+  }
 
   ngOnInit(): void {
   }
 
+  async changeProfilePic(event:Event){
+    let files=(event.target as HTMLInputElement).files;
+    if(files!=null){
+      let base64=await this.fileUploader.fileToBase64(files[0]) as string;
+      this.user.pic=base64;
+      this.userManager.editPic(this.user.id,base64);
+    }
+  }
 }

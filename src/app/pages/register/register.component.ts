@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionManagerService } from 'src/app/services/session-manager.service';
-import { StorageManagerService } from 'src/app/services/storage-manager.service';
+import { UserManagerService } from 'src/app/services/user-manager.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
     password: '',
     rPassword:''
   });
-  constructor(private formBuilder:FormBuilder,private storageManager:StorageManagerService, private sessionManager:SessionManagerService, private router:Router) { }
+  constructor(private formBuilder:FormBuilder,private userManager:UserManagerService, private sessionManager:SessionManagerService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,11 +26,11 @@ export class RegisterComponent implements OnInit {
     let email=this.registerForm.value.email || "";
     let password=this.registerForm.value.password || "";
     let rPassword=this.registerForm.value.rPassword || "";
-    let user=this.storageManager.getUser(username || "");
+    let user=this.userManager.getUser(username || "");
     if(user.username===""){
-      if(!this.storageManager.existsEmail(email || "")){
+      if(!this.userManager.existsEmail(email || "")){
         if(password===rPassword){
-          this.storageManager.newUser(username,email,password);
+          this.userManager.newUser(username,email,password);
           this.router.navigateByUrl("/login");
         } else{
           console.error("Las contraseñas no coinciden");
