@@ -15,9 +15,11 @@ export class StoriesComponent implements OnInit {
   stories;
   
   slideIndex = 0;
-  constructor(private storyManager:StoryMangerService,private userManager:UserManagerService,private route: ActivatedRoute, sessionManager:SessionManagerService) {
+  constructor(private storyManager:StoryMangerService,private userManager:UserManagerService,private route: ActivatedRoute, private sessionManager:SessionManagerService) {
     this.user=userManager.getUserFromUsername(route.snapshot.paramMap.get('username')||"");
     this.stories=storyManager.getStoriesFromUser(this.user.id);
+    let firstStoryNotSeen=storyManager.getFirstStoryNotSeen(this.stories,sessionManager.getId());
+    this.slideIndex=firstStoryNotSeen!==-1?firstStoryNotSeen:0;
     storyManager.seeStory(this.stories[this.slideIndex].id,sessionManager.getId());
   }
 
@@ -28,8 +30,8 @@ export class StoriesComponent implements OnInit {
 changeStory(n:number) {
   //console.log(this.slideIndex);
   if(this.slideIndex+n<this.stories.length && this.slideIndex+n>=0){
-   
     this.slideIndex += n;
+    this.storyManager.seeStory(this.stories[this.slideIndex].id,this.sessionManager.getId());
   }
 }
 

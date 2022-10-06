@@ -33,10 +33,15 @@ export class HomeComponent implements OnInit {
       } else{
         let aviableStories=storyManager.getStories().filter(x=>!storyManager.alreadySeen(x.id,this.user.id));
         this.stories=storyManager.getStoriesDistinctUsers(aviableStories);
+        this.storiesAlreadySeen=storyManager.getStoriesDistinctUsers(this.storiesAlreadySeen);
       }
       this.stories.map((x)=>{
           x["user"]=userManager.getUserFromId(x.id_user);
       });
+      this.storiesAlreadySeen.map((x)=>{
+        x["user"]=userManager.getUserFromId(x.id_user);
+      });
+      
     }
   }
 

@@ -64,4 +64,8 @@ export class StoryMangerService {
   getStoriesSeenByUser(user:number):Array<IStory>{
     return this.stories.filter(x=>this.alreadySeen(x.id,user));
   }
+  getFirstStoryNotSeen(stories: IStory[], userId: number): number {
+    return stories.findIndex(x=>x.seenBy.indexOf(userId)===-1);
+  }
+
 }
