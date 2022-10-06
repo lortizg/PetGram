@@ -7,7 +7,12 @@
             <img [src]="user.pic">
         </a>
         <!-- <ol class="storyList"> -->
-            <li *ngFor="let story of stories">
+            <li id="noSeen" *ngFor="let story of stories">
+                <a [routerLink]="['/stories/'+story.user.username]">
+                    <img [src]="story.user.pic">
+                </a>                
+            </li>
+            <li id="alreadySeen" *ngFor="let story of storiesAlreadySeen">
                 <a [routerLink]="['/stories/'+story.user.username]">
                     <img [src]="story.user.pic">
                 </a>                

@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   user;
   posts:Array<any>=[];
   stories:Array<any>=[];
+  storiesAlreadySeen:Array<any>=[];
   constructor(private sessionManager:SessionManagerService,private router:Router, postManager:PostManagerService,userManager:UserManagerService, storyManager:StoryMangerService) {
     this.user=sessionManager.getUser();
     if(this.user instanceof Array){
@@ -26,7 +27,13 @@ export class HomeComponent implements OnInit {
         x["user"]=userManager.getUserFromId(x.id_user);
       });
 
-      this.stories=storyManager.getStoriesDistinctUsers();
+      this.storiesAlreadySeen=storyManager.getStoriesSeenByUser(this.user.id);
+      if(this.storiesAlreadySeen.length===0){
+        this.stories=storyManager.getStoriesDistinctUsers();
+      } else{
+        let aviableStories=storyManager.getStories().filter(x=>!storyManager.alreadySeen(x.id,this.user.id));
+        this.stories=storyManager.getStoriesDistinctUsers(aviableStories);
+      }
       this.stories.map((x)=>{
           x["user"]=userManager.getUserFromId(x.id_user);
       });

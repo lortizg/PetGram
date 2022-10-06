@@ -19,13 +19,21 @@ export class StoryMangerService {
   getStories():Array<IStory>{
     return JSON.parse(localStorage.getItem("stories") || "[]");
   }
-  getStoriesDistinctUsers(){
+  getStoriesDistinctUsers(storiesList:Array<any>=[-1]){
     //eliminar historias con users duplicados para hacer la lista del home
-    let sortedStoriesByDate=[...this.stories].sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
-    return sortedStoriesByDate.filter((v,i,a)=>a.findIndex(x=>x.id_user===v.id_user)===i);
+    let list;
+    if(storiesList[0]===-1){
+      list=this.stories;
+    } else {
+      list=storiesList;
+    }
+    let sortedStoriesByDate=[...list].sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
+    let result=[...sortedStoriesByDate].filter((v,i,a)=>a.findIndex(x=>x.id_user===v.id_user)===i);
+    return result;
   }
   getStoriesFromUser(id:number):Array<IStory>{
-    return [...this.stories].filter(x=>x.id_user=id);
+    let result=[...this.stories].filter(x=>x.id_user===id);
+    return result;
   }
 
   addStory(userId:number,image:string){
@@ -40,5 +48,20 @@ export class StoryMangerService {
   }
   updateStories(){
     localStorage.setItem("stories",JSON.stringify(this.stories));
+  }
+  seeStory(idStory:number,user:number){
+    if(!this.alreadySeen(idStory,user)){
+      this.getStoryFromId(idStory).seenBy.push(user);
+      this.updateStories();
+    }
+  }
+  getStoryFromId(idStory:number):IStory{
+    return this.stories.filter(x=>x.id===idStory)[0];
+  }
+  alreadySeen(idStory:number,user:number){
+    return this.getStoryFromId(idStory).seenBy.indexOf(user) !==-1;
+  }
+  getStoriesSeenByUser(user:number):Array<IStory>{
+    return this.stories.filter(x=>this.alreadySeen(x.id,user));
   }
 }

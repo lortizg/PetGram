@@ -71,7 +71,13 @@ img{
 }
 #stories li{
     list-style-type: none;
-    background: rgb(255,245,95);
-background: radial-gradient(circle, rgba(255,245,95,1) 0%, rgba(199,77,102,1) 100%);
     border-radius: 30px;
+}
+#noSeen{
+    background: rgb(255,245,95);
+    background: radial-gradient(circle, rgba(255,245,95,1) 0%, rgba(199,77,102,1) 100%);
+    
+}
+#alreadySeen{
+    background:transparent;
 }
