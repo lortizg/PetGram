@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UploadFileService } from 'src/app/services/upload-file.service';
 import { UserManagerService } from 'src/app/services/user-manager.service';
 import { SessionManagerService } from 'src/app/services/session-manager.service';
+import { PostManagerService } from 'src/app/services/post-manager.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +14,10 @@ import { SessionManagerService } from 'src/app/services/session-manager.service'
 export class ProfileComponent implements OnInit {
 
   user:IUser;
-  constructor(private userManager:UserManagerService, private route:ActivatedRoute,private fileUploader:UploadFileService,private sessionManager:SessionManagerService) {
+  posts;
+  constructor(private userManager:UserManagerService, private postManager:PostManagerService, private route:ActivatedRoute,private fileUploader:UploadFileService,private sessionManager:SessionManagerService) {
     this.user=userManager.getUserFromUsername(this.route.snapshot.paramMap.get('username')||"");
+    this.posts=postManager.getPostsFromUser(this.user.id);
   }
 
   ngOnInit(): void {

@@ -16,6 +16,7 @@ import { NewPostComponent } from './pages/new-post/new-post.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { NewStoryComponent } from './pages/new-story/new-story.component';
+import { PostListComponent } from './components/post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NewStoryComponent } from './pages/new-story/new-story.component';
     FooterComponent,
     FilterPipe,
     NewPostComponent,
-    NewStoryComponent
+    NewStoryComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,

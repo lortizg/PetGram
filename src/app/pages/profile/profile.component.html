@@ -3,4 +3,10 @@
 </label>
 <input type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
 <p>{{user.username}}</p>
+
+<!-- CAMBIAR A COMPONENTE QUE HE USAO ESTO DOS VECES -->
+
+
+
+<app-post-list [posts]="posts" [user]="user"></app-post-list>
 <app-footer></app-footer>

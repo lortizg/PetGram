@@ -1,0 +1,14 @@
+<ol class="list">
+    <li *ngFor="let post of posts">
+        <a id="postHeader">
+            <img [src]="user.pic">
+            <p>{{user.username}}</p>
+        </a>
+        <div id="post">
+            <img [src]="post.img">
+            <p>{{post.description}}</p>
+        </div>
+        
+    </li>
+</ol>
+<ng-content></ng-content>
