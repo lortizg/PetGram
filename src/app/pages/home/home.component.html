@@ -1,8 +1,21 @@
 <div id="homeContainer">
-    <p>{{user.username}}</p>
-    <button (click)="logout()">Cerrar sesión</button>
-    <a routerLink="/post">
-        <mat-icon>add_circle_outline</mat-icon>
+    <div id="topBar">
+        <button (click)="logout()">Cerrar sesión</button>
+    </div>
+    <div id="stories">
+        <a routerLink="/newStory">
+            <img [src]="user.pic">
+        </a>
+        <!-- <ol class="storyList"> -->
+            <li *ngFor="let story of stories">
+                <a [routerLink]="['/stories/'+story.user.username]">
+                    <img [src]="story.user.pic">
+                </a>                
+            </li>
+        <!-- </ol> -->
+    </div>
+    <a routerLink="/post" id="newPostIcon">
+        <mat-icon>add_circle</mat-icon>
     </a>
     <ol class="list">
         <li *ngFor="let post of posts">

@@ -1,0 +1,6 @@
+<p>new-story works!</p>
+<form [formGroup]="newStory" (ngSubmit)="publish()">
+    <!-- <input type="text" formControlName="description" placeholder="Say something about your pic!"> -->
+    <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
+    <button type="submit">Publish</button>
+</form>

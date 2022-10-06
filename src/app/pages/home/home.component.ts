@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { IPost } from 'src/app/interfaces/ipost';
 import { PostManagerService } from 'src/app/services/post-manager.service';
 import { UserManagerService } from 'src/app/services/user-manager.service';
+import { StoryMangerService } from 'src/app/services/story-manger.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ import { UserManagerService } from 'src/app/services/user-manager.service';
 export class HomeComponent implements OnInit {
   user;
   posts:Array<any>=[];
-  constructor(private sessionManager:SessionManagerService,private router:Router, postManager:PostManagerService,userManager:UserManagerService) {
+  stories:Array<any>=[];
+  constructor(private sessionManager:SessionManagerService,private router:Router, postManager:PostManagerService,userManager:UserManagerService, storyManager:StoryMangerService) {
     this.user=sessionManager.getUser();
     if(this.user instanceof Array){
       this.router.navigateByUrl('/login');
@@ -22,6 +24,11 @@ export class HomeComponent implements OnInit {
       this.posts=postManager.getPosts().sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
       this.posts.map((x)=>{
         x["user"]=userManager.getUserFromId(x.id_user);
+      });
+
+      this.stories=storyManager.getStoriesDistinctUsers();
+      this.stories.map((x)=>{
+          x["user"]=userManager.getUserFromId(x.id_user);
       });
     }
   }

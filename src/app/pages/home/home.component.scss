@@ -1,11 +1,11 @@
 #homeContainer{
     height: 90%;
-    font-size: medium;
+    font-size: 3.5vw;
     overflow-y: scroll;
    // background-color: burlywood;
     overflow-wrap: normal;
-overflow-wrap: break-word;
-overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 img{
     max-width: 100%;
@@ -27,18 +27,51 @@ img{
      background-color: burlywood;
 }
 #postHeader img{
-    width: 10%;
-
-    -webkit-mask-image: url(https://cdn-icons-png.flaticon.com/512/12/12638.png);
-    mask-image: url(https://cdn-icons-png.flaticon.com/512/12/12638.png);
-    -webkit-mask-repeat: round;
-    mask-repeat: no-repeat; 
+    width: 13vw;
+    height: 13vw;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 2%;
 }
 #postHeader p{
     margin: auto 2%;
     font-weight: bold;
 }
-li{
+.list li{
     margin: 1% 0 3% 0;
     border-bottom: 2px solid rgb(153, 79, 18);
+}
+#newPostIcon{
+    position: fixed;
+    bottom:12%;
+    right: 5%;
+    transform: scale(2.5);
+    color: rgb(153, 79, 18);
+}
+#stories{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: burlywood;
+    flex-wrap: nowrap;
+    //padding:  2% 0;
+}
+#stories > * {
+    margin: 1.5% 1% 1% 1%;
+}
+#stories img{
+    width: 15vw;
+    height: 15vw;
+    min-width: 15vw;
+    object-fit: cover;
+    -webkit-mask-image: url("/assets/images/huellita.png");
+    mask-image: url("/assets/images/huellita.png");
+    -webkit-mask-repeat: round;
+    mask-repeat: no-repeat; 
+}
+#stories li{
+    list-style-type: none;
+    background: rgb(255,245,95);
+background: radial-gradient(circle, rgba(255,245,95,1) 0%, rgba(199,77,102,1) 100%);
+    border-radius: 30px;
 }

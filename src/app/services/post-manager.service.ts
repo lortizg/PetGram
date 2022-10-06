@@ -41,7 +41,7 @@ export class PostManagerService {
     this.posts.push(newPost);
     this.updatePosts(this.posts);
   }
-  public getPublisher(post:IPost){
-    let users=this.userManager.getUsers();
-  }
+  // public getPublisher(post:IPost){
+  //   let users=this.userManager.getUsers();
+  // }
 }

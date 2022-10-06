@@ -81,8 +81,7 @@ export class UserManagerService {
   }
 
   public editPic(id:number,pic:string){
-    let currentList=this.getUsers();
-    currentList[this.getPositionFromId(id)].pic=pic;
-    this.updateUsers(currentList);
+    this.users[this.getPositionFromId(id)].pic=pic;
+    this.updateUsers(this.users);
   }
 }
