@@ -12,8 +12,7 @@ export class FilterPipe implements PipeTransform {
 
     const users=[];
     for(let user of value){
-      if( (user.id.toString()).includes(filteredString) ||
-          (user.name.toLowerCase()).includes(filteredString.toLowerCase())){
+      if( (user.username.toLowerCase()).includes(filteredString.toLowerCase())){
               users.push(user);
       }
     }

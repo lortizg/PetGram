@@ -1,12 +1,16 @@
 <div class="topBar">
-    <div class="searchBar">
+    <!-- <div class="searchBar"> -->
         <input type="text" class="inputSearch" placeholder=" Search..." [(ngModel)]="filteredString"/>
-    </div>
+    <!-- </div> -->
 </div>
 
 <ol class="list">
     <li *ngFor="let user of userList | filter:filteredString; let i=index ">
-        <a [routerLink]="['/profile/'+user.username]">{{user.username}}</a>
+        <a [routerLink]="['/profile/'+user.username]">
+            <img [src]="user.pic">
+            <p>{{user.username}}</p> 
+        </a>
+        <hr>
     </li>
 </ol>
 <app-footer></app-footer>

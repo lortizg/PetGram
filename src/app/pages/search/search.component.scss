@@ -1,0 +1,44 @@
+li{
+    height: 8vh;
+    font-size: 5vw;
+    
+    list-style-type: none;
+}
+li img{
+    width: 15vw;
+    height: 15vw;
+    min-width: 15vw;
+    object-fit: cover;
+    -webkit-mask-image: url("/assets/images/huellita.png");
+    mask-image: url("/assets/images/huellita.png");
+    -webkit-mask-repeat: round;
+    mask-repeat: no-repeat; 
+    
+}
+a{
+    
+    display: flex;
+    padding: 1%;
+    align-items: center;
+    
+}
+a p{
+    margin: auto 1.5%;
+    
+}
+.topBar{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2%;
+}
+
+ input{
+    color:black;
+    border: 2px solid burlywood;
+    border-radius: 12px;
+    padding: 5px;
+    font-size: 5vw;
+    padding: 1%;
+    margin: 5% 0;
+
+}
