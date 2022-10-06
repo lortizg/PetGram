@@ -1,0 +1,64 @@
+#storyHeader{
+    position: fixed;
+    top:2%;
+    left: 5%;
+    align-items: center;
+}
+img{
+    max-width: 100%;
+}
+#storyHeader img{
+    width: 13vw;
+    height: 13vw;
+    object-fit: cover;
+    -webkit-mask-image: url("/assets/images/huellita.png");
+    mask-image: url("/assets/images/huellita.png");
+    -webkit-mask-repeat: round;
+    mask-repeat: no-repeat; 
+}
+#storyHeader p{
+    margin: auto 5%;
+    font-weight: bold;
+    font-size: 3.5vw;
+}
+ol{
+    display: flex;
+    height: 100%;
+    list-style-type: none;
+}
+li, #post, #post img{
+    height: 100%;
+}
+#post img{
+    object-fit: cover;
+}
+
+
+
+
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+//   .prev:hover, .next:hover {
+//     background-color: rgba(0,0,0,0.8);
+//   }
+  

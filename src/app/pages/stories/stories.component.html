@@ -1,14 +1,16 @@
-<p>stories works!</p>
 <ol class="list">
-    <li *ngFor="let story of stories">
-        <a id="storyHeader">
-            <img [src]="post.user.pic">
-            <p>{{post.user.username}}</p>
-        </a>
-        <div id="post">
-            <img [src]="post.img">
-            <p>{{post.description}}</p>
+    <li *ngFor="let story of stories; let i=index">
+        
+        <div id="post" [ngStyle]="{'display': (i===slideIndex?'block':'none')}">
+            <img [src]="story.img">
         </div>
+        <a id="storyHeader" [ngStyle]="{'display': (i===slideIndex?'flex':'none')}">
+            <img [src]="user.pic">
+            <p>{{user.username}}</p>
+        </a>
         
     </li>
 </ol>
+<!-- Next and previous buttons -->
+<a class="prev" (click)="changeStory(-1)">&#10094;</a>
+<a class="next" (click)="changeStory(1)">&#10095;</a>
