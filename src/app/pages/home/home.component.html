@@ -22,19 +22,6 @@
     <a routerLink="/post" id="newPostIcon">
         <mat-icon>add_circle</mat-icon>
     </a>
-    <!-- <ol class="list">
-        <li *ngFor="let post of posts">
-            <a id="postHeader">
-                <img [src]="post.user.pic">
-                <p>{{post.user.username}}</p>
-            </a>
-            <div id="post">
-                <img [src]="post.img">
-                <p>{{post.description}}</p>
-            </div>
-            
-        </li>
-    </ol> -->
     <app-post-list [posts]="posts" [user]="user"></app-post-list>
 </div> 
 <app-footer></app-footer>

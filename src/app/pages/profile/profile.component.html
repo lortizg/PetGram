@@ -1,11 +1,10 @@
-<label for="profilePic">
-    <img [src]="[user.pic==''? 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png' : user.pic]" >
-</label>
-<input type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
-<p>{{user.username}}</p>
-
-<!-- CAMBIAR A COMPONENTE QUE HE USAO ESTO DOS VECES -->
-
+<div id="info">
+    <label for="profilePic">
+        <img [src]="[user.pic==''? 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png' : user.pic]" >
+    </label>
+    <input type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
+    <p>{{user.username}}</p>
+</div>
 
 
 <app-post-list [posts]="posts" [user]="user"></app-post-list>

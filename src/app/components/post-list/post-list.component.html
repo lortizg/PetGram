@@ -8,7 +8,10 @@
             <img [src]="post.img">
             <p>{{post.description}}</p>
         </div>
-        
+        <div id="like">
+            <img (click)="like(post.id)" [src]="'/assets/images/'+(liked(post.id)?'like.png':'noLike.png')">
+            <!-- <p>Liked by </p> -->
+        </div>
     </li>
 </ol>
 <ng-content></ng-content>

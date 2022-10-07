@@ -17,7 +17,10 @@ export class PostManagerService {
   }
 
   private getNumberOfPosts(){
-    return this.getPosts().length;
+    return this.posts.length;
+  }
+  private getPostFromId(id:number){
+    return this.posts.findIndex((x)=>x.id===id);
   }
   public getPosts():Array<IPost>{
     return JSON.parse(localStorage.getItem("posts") || "[]");
@@ -26,8 +29,8 @@ export class PostManagerService {
     let posts=this.getPosts();
     return posts.filter((x)=>x.id_user===id);
   }
-  public updatePosts(newPosts:Array<IPost>):void{
-    localStorage.setItem("posts",JSON.stringify(newPosts));
+  public updatePosts():void{
+    localStorage.setItem("posts",JSON.stringify(this.posts));
   }
   public addPost(userId:number,desc:string,img:string){
     const newPost:IPost={
@@ -39,7 +42,32 @@ export class PostManagerService {
       likedBy:[]
     }
     this.posts.push(newPost);
-    this.updatePosts(this.posts);
+    this.updatePosts();
+  }
+
+  public likePost(postId:number,userId:number){
+    let index=this.getPostFromId(postId);
+    if(index!==-1){
+      this.posts[index].likedBy.push(userId);
+      this.updatePosts();
+    }
+  }
+  public unLikePost(postId:number,userId:number){
+    let index=this.getPostFromId(postId);
+    if(index!==-1){
+      let likedIndex=this.posts[index].likedBy.indexOf(userId);
+      if(likedIndex!==-1){
+        this.posts[index].likedBy.splice(likedIndex,1);
+        this.updatePosts();
+      }
+    }
+  }
+  public getPostsLikedBy(id:number){
+    let postsLiked=[...this.posts].filter(x=>x.likedBy.indexOf(id)!==-1);
+    return [...postsLiked].map(x=>{return x.id});
+  }
+  public isPostLikedBy(idPost:number,idUser:number){
+    return this.getPostsLikedBy(idUser).indexOf(idPost)!==-1;
   }
   // public getPublisher(post:IPost){
   //   let users=this.userManager.getUsers();

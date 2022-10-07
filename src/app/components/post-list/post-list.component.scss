@@ -1,4 +1,9 @@
-#post img{
+.list{
+    overflow-wrap: normal;
+    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+#post :first-child{
     min-width: 100%;
 }
 #post {
@@ -24,4 +29,9 @@
 #postHeader p{
     margin: auto 2%;
     font-weight: bold;
+}
+#like{
+    width: 10vw;
+    margin-left: 2%;
+    margin-top: -4%;
 }
