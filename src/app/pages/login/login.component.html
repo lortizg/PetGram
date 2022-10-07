@@ -1,9 +1,12 @@
-
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <input type="text" formControlName="username" placeholder="Username...">
-    <input type="text" formControlName="password" placeholder="Password...">
-    <button type="submit">Log in!</button>
-</form>
-
-<p>Not registered?</p>
-<a routerLink="/register">Sign in</a>
+<div id="loginContainer">
+    <img id="appImg" src="/assets/images/icon.png">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input type="text" formControlName="username" placeholder="Username...">
+        <input type="text" formControlName="password" placeholder="Password...">
+        <button type="submit">Log in!</button>
+    </form>
+    <div id="register">
+        <p>Not registered?</p>
+        <a routerLink="/register">Sign in</a>
+    </div>
+</div>

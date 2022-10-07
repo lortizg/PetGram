@@ -14,7 +14,6 @@ import { StoryMangerService } from 'src/app/services/story-manger.service';
 })
 export class HomeComponent implements OnInit {
   user;
-  //posts:Array<any>=[];
   stories:Array<any>=[];
   storiesAlreadySeen:Array<any>=[];
   constructor(private sessionManager:SessionManagerService,private router:Router, userManager:UserManagerService, storyManager:StoryMangerService) {
@@ -22,7 +21,6 @@ export class HomeComponent implements OnInit {
     if(this.user instanceof Array){
       this.router.navigateByUrl('/login');
     } else{
-     
       this.storiesAlreadySeen=storyManager.getStoriesSeenByUser(this.user.id);
       if(this.storiesAlreadySeen.length===0){
         this.stories=storyManager.getStoriesDistinctUsers();

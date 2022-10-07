@@ -1,10 +1,15 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
-    <input type="text" formControlName="username" placeholder="Username...">
-    <input type="text" formControlName="email" placeholder="Email...">
-    <input type="text" formControlName="password" placeholder="Password...">
-    <input type="text" formControlName="rPassword" placeholder="Repeat password...">
-    <button type="submit">Sign in!</button>
-</form>
+<div id="registerContainer">
+    <img id="appImg" src="/assets/images/icon.png">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <input type="text" formControlName="username" placeholder="Username...">
+        <input type="text" formControlName="email" placeholder="Email...">
+        <input type="text" formControlName="password" placeholder="Password...">
+        <input type="text" formControlName="rPassword" placeholder="Repeat password...">
+        <button type="submit">Sign in!</button>
+    </form>
+    <div id="login">
+        <p>Already registered?</p>
+        <a routerLink="/login">Log in</a>
+    </div>
+</div>
 
-<p>Already registered?</p>
-<a routerLink="/login">Log in</a>
