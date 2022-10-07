@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/interfaces/iuser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UploadFileService } from 'src/app/services/upload-file.service';
 import { UserManagerService } from 'src/app/services/user-manager.service';
 import { SessionManagerService } from 'src/app/services/session-manager.service';
@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 
   user:IUser;
   posts;
-  constructor(private userManager:UserManagerService, private postManager:PostManagerService, private route:ActivatedRoute,private fileUploader:UploadFileService,private sessionManager:SessionManagerService) {
+  constructor(private userManager:UserManagerService, private postManager:PostManagerService, private route:ActivatedRoute,private fileUploader:UploadFileService,private sessionManager:SessionManagerService,private router:Router) {
     this.user=userManager.getUserFromUsername(this.route.snapshot.paramMap.get('username')||"");
     this.posts=postManager.getPostsFromUser(this.user.id);
   }
@@ -32,4 +32,10 @@ export class ProfileComponent implements OnInit {
       this.sessionManager.setUser(this.user); 
     }
   }
+  
+  public logout():void{
+    this.sessionManager.clearSession();
+    this.router.navigateByUrl("/login");
+  }
+
 }

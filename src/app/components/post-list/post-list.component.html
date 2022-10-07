@@ -1,8 +1,8 @@
 <ol class="list">
     <li *ngFor="let post of posts">
         <a id="postHeader">
-            <img [src]="user.pic">
-            <p>{{user.username}}</p>
+            <img [src]="user===undefined?post.user.pic:user.pic">
+            <p>{{user===undefined?post.user.username:user.username}}</p>
         </a>
         <div id="post">
             <img [src]="post.img">

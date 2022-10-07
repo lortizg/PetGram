@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PostManagerService } from 'src/app/services/post-manager.service';
 import { SessionManagerService } from 'src/app/services/session-manager.service';
+import { UserManagerService } from 'src/app/services/user-manager.service';
 
 @Component({
   selector: 'app-post-list',
@@ -9,9 +10,20 @@ import { SessionManagerService } from 'src/app/services/session-manager.service'
 })
 export class PostListComponent {
 
-  @Input() posts:any;
+  posts:Array<any>;
   @Input() user:any;
-  constructor(private postManager:PostManagerService, private sessionManager:SessionManagerService) {}
+  constructor(private postManager:PostManagerService, private sessionManager:SessionManagerService,private userManager:UserManagerService) {
+    console.log(this.user);
+    if(this.user!==undefined){
+      this.posts=postManager.getPostsFromUser(this.user).sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
+    } else{
+      this.posts=postManager.getPosts().sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
+    }
+    this.posts.map((x)=>{
+      x["user"]=userManager.getUserFromId(x.id_user);
+    });
+
+  }
 
   ngOnInit(): void {  }
 

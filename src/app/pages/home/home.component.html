@@ -1,7 +1,4 @@
 <div id="homeContainer">
-    <div id="topBar">
-        <button (click)="logout()">Cerrar sesión</button>
-    </div>
     <div id="stories">
         <a routerLink="/newStory">
             <img [src]="user.pic">
@@ -22,6 +19,6 @@
     <a routerLink="/post" id="newPostIcon">
         <mat-icon>add_circle</mat-icon>
     </a>
-    <app-post-list [posts]="posts" [user]="user"></app-post-list>
+    <app-post-list></app-post-list>
 </div> 
 <app-footer></app-footer>

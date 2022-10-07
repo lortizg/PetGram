@@ -1,9 +1,32 @@
+
+#profileContainer{
+    height: 90%;
+    font-size: 3.5vw;
+    overflow-y: scroll;
+}
 #info{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin:5% 2%;
 }
 #info img{
-    width: 40%;
+    width: 30vw;
+    height: 30vw;
+    min-width: 15vw;
+    object-fit: cover;
     border-radius: 50%;
+}
+p{
+    margin-left: 4%;
+    font-size: 4.5vw;
+    font-weight: bold;
+}
+#topBar{
+    display: flex;
+    justify-content: space-between;
+}
+#topBar button {
+    height: 2%;
+    margin-top: 2%;
 }

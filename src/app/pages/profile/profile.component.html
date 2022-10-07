@@ -1,11 +1,17 @@
-<div id="info">
-    <label for="profilePic">
-        <img [src]="[user.pic==''? 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png' : user.pic]" >
-    </label>
-    <input type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
-    <p>{{user.username}}</p>
+<div id="profileContainer">
+    <div id="topBar">
+       
+        <div id="info">
+            <label for="profilePic">
+                <img [src]="[user.pic==''? 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png' : user.pic]" >
+            </label>
+            <input type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
+            <p>{{user.username}}</p>
+        </div>
+        <button (click)="logout()">Cerrar sesión</button>
+    </div>
+   
+    <app-post-list [user]="user"></app-post-list>
 </div>
 
-
-<app-post-list [posts]="posts" [user]="user"></app-post-list>
 <app-footer></app-footer>
