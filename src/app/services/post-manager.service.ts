@@ -26,8 +26,7 @@ export class PostManagerService {
     return JSON.parse(localStorage.getItem("posts") || "[]");
   }
   public getPostsFromUser(id:number){
-    let posts=this.getPosts();
-    return posts.filter((x)=>x.id_user===id);
+    return this.posts.filter((x)=>x.id_user===id);
   }
   public updatePosts():void{
     localStorage.setItem("posts",JSON.stringify(this.posts));

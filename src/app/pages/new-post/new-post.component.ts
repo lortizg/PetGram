@@ -22,7 +22,8 @@ export class NewPostComponent implements OnInit {
   public publish(){
     const desc=this.newPost.value.description || "";
     const image=this.newPost.value.image || "";
-    if(image!=""){
+    console.log(desc +": "+image);
+    if(image!==""){
       this.postManager.addPost(this.sessionManager.getId(),desc,image);
       this.router.navigateByUrl("");
     }

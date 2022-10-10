@@ -10,22 +10,23 @@ import { UserManagerService } from 'src/app/services/user-manager.service';
 })
 export class PostListComponent {
 
-  posts:Array<any>;
+  posts:Array<any>=[];
   @Input() user:any;
   constructor(private postManager:PostManagerService, private sessionManager:SessionManagerService,private userManager:UserManagerService) {
-    console.log(this.user);
-    if(this.user!==undefined){
-      this.posts=postManager.getPostsFromUser(this.user).sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
-    } else{
-      this.posts=postManager.getPosts().sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
-    }
-    this.posts.map((x)=>{
-      x["user"]=userManager.getUserFromId(x.id_user);
-    });
+    
 
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+    if(this.user!==undefined){
+      this.posts=this.postManager.getPostsFromUser(this.user).sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
+    } else{
+      this.posts=this.postManager.getPosts().sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
+    }
+    this.posts.map((x)=>{
+      x["user"]=this.userManager.getUserFromId(x.id_user);
+    });
+  }
 
   like(postId:number){
     let userId=this.sessionManager.getId();
