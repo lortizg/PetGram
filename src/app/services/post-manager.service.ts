@@ -19,7 +19,7 @@ export class PostManagerService {
   private getNumberOfPosts(){
     return this.posts.length;
   }
-  private getPostFromId(id:number){
+  private getIdPostFromId(id:number){
     return this.posts.findIndex((x)=>x.id===id);
   }
   public getPosts():Array<IPost>{
@@ -45,14 +45,14 @@ export class PostManagerService {
   }
 
   public likePost(postId:number,userId:number){
-    let index=this.getPostFromId(postId);
+    let index=this.getIdPostFromId(postId);
     if(index!==-1){
       this.posts[index].likedBy.push(userId);
       this.updatePosts();
     }
   }
   public unLikePost(postId:number,userId:number){
-    let index=this.getPostFromId(postId);
+    let index=this.getIdPostFromId(postId);
     if(index!==-1){
       let likedIndex=this.posts[index].likedBy.indexOf(userId);
       if(likedIndex!==-1){
@@ -64,6 +64,10 @@ export class PostManagerService {
   public getPostsLikedBy(id:number){
     let postsLiked=[...this.posts].filter(x=>x.likedBy.indexOf(id)!==-1);
     return [...postsLiked].map(x=>{return x.id});
+  }
+  public getLikesFromPost(id:number){
+    let index=this.getIdPostFromId(id);
+    return this.posts[index].likedBy;
   }
   public isPostLikedBy(idPost:number,idUser:number){
     return this.getPostsLikedBy(idUser).indexOf(idPost)!==-1;

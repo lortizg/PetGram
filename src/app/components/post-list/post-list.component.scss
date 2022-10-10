@@ -31,10 +31,18 @@
     font-weight: bold;
 }
 #like{
-    width: 10vw;
+   // width: 10vw;
     margin-left: 2%;
     margin-top: -4%;
+    display:flex;
 }
+#like img{
+    width: 10vw;
+}
+#like p{
+    margin: auto 2% ;
+}
+
 
 #noPosts{
     text-align: center;
