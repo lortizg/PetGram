@@ -1,21 +1,31 @@
 <div id="homeContainer">
-    <div id="stories">
-        <a routerLink="/newStory">
+    <div id="TopBar">
+        <a id="MyStory" routerLink="/newStory">
             <img [src]="user.pic">
+            <p>Your story</p>
         </a>
+        <div id="stories">
         <!-- <ol class="storyList"> -->
             <li id="noSeen" *ngFor="let story of stories">
                 <a [routerLink]="['/stories/'+story.user.username]">
-                    <img [src]="story.user.pic">
+                    <div id="noSeenImg">
+                        <img [src]="story.user.pic">
+                    </div>
+                    <p>{{story.user.username}}</p>
                 </a>                
             </li>
             <li id="alreadySeen" *ngFor="let story of storiesAlreadySeen">
                 <a [routerLink]="['/stories/'+story.user.username]">
-                    <img [src]="story.user.pic">
+                    <div >
+                        <img [src]="story.user.pic">
+                    </div>
+                    <p>{{story.user.username}}</p>
                 </a>                
             </li>
         <!-- </ol> -->
     </div>
+    </div>
+        
     <a routerLink="/post" id="newPostIcon">
         <mat-icon>add_circle</mat-icon>
     </a>

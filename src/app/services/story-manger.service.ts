@@ -29,6 +29,7 @@ export class StoryMangerService {
     }
     let sortedStoriesByDate=[...list].sort((a,b)=> <any> new Date(b.date) - <any> new Date(a.date));
     let result=[...sortedStoriesByDate].filter((v,i,a)=>a.findIndex(x=>x.id_user===v.id_user)===i);
+    result=result.map(x=>{return x.id_user});
     return result;
   }
   getStoriesFromUser(id:number):Array<IStory>{

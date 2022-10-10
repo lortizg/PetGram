@@ -3,10 +3,6 @@
     font-size: 3.5vw;
     overflow-y: scroll;
 }
-.list li{
-    margin: 1% 0 3% 0;
-    border-bottom: 2px solid rgb(153, 79, 18);
-}
 #newPostIcon{
     position: fixed;
     bottom:12%;
@@ -25,7 +21,7 @@
 #stories > * {
     margin: 1.5% 1% 1% 1%;
 }
-#stories img{
+#TopBar img{
     width: 15vw;
     height: 15vw;
     min-width: 15vw;
@@ -35,14 +31,38 @@
     -webkit-mask-repeat: round;
     mask-repeat: no-repeat; 
 }
+#stories p{
+    width: 15vw;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+a{
+    
+    text-decoration: none;
+    color:black;
+}
 #stories li{
     list-style-type: none;
-    border-radius: 50%;
 }
-#noSeen{
+#TopBar{
+    display: flex;
+    background-color: burlywood;
+    max-width: 100%;
+    overflow: auto;
+}
+#MyStory{
+    margin:1.5% 1% 0 1.5%;
+    width: 19vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#noSeenImg{
     background: rgb(255,245,95);
     background: radial-gradient(circle, rgba(255,245,95,1) 0%, rgba(199,77,102,1) 100%);
-    
+    border-radius: 10px; 
 }
 #alreadySeen{
     background:transparent;
