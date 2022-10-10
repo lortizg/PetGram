@@ -4,7 +4,7 @@
             <label for="profilePic">
                 <img [src]="user.pic" >
             </label>
-            <input type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
+            <input *ngIf="isMyProfile()" type="file" id="profilePic" accept="image/*" hidden (change)="changeProfilePic($event)">
             <p>{{user.username}}</p>
         </div>
         <button (click)="logout()">Cerrar sesión</button>
