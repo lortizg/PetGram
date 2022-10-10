@@ -1,10 +1,14 @@
 <div id="registerContainer">
     <img id="appImg" src="/assets/images/icon.png">
-    <form [formGroup]="registerForm" (ngSubmit)="register()">
-        <input type="text" formControlName="username" placeholder="Username...">
-        <input type="text" formControlName="email" placeholder="Email...">
-        <input type="text" formControlName="password" placeholder="Password...">
-        <input type="text" formControlName="rPassword" placeholder="Repeat password...">
+    <form (ngSubmit)="register()">
+        <input type="text" [(ngModel)]="registerForm.username" [ngModelOptions]="{standalone: true}" placeholder="Username...">
+        <p *ngIf="error.username!==''">{{error.username}}</p>
+        <input type="text" [(ngModel)]="registerForm.email" [ngModelOptions]="{standalone: true}"  placeholder="Email...">
+        <p *ngIf="error.email!==''">{{error.email}}</p>
+        <input type="password" [(ngModel)]="registerForm.password" [ngModelOptions]="{standalone: true}" placeholder="Password...">
+        <p *ngIf="error.password!==''">{{error.password}}</p>
+        <input type="password" [(ngModel)]="registerForm.rPassword"  [ngModelOptions]="{standalone: true}" placeholder="Repeat password...">
+        <p *ngIf="error.rPassword!==''">{{error.rPassword}}</p>
         <button type="submit">Sign in!</button>
     </form>
     <div id="login">

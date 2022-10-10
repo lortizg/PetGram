@@ -26,6 +26,7 @@ export class PostListComponent {
     this.posts.map((x)=>{
       x["user"]=this.userManager.getUserFromId(x.id_user);
     });
+    console.log(this.posts);
   }
 
   like(postId:number){

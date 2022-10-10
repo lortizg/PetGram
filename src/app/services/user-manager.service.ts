@@ -38,7 +38,7 @@ export class UserManagerService {
     return JSON.parse(localStorage.getItem("users") || "[]");
   }
   public existsUser(username:string):boolean{
-    return this.getUserFromUsername(username)===this.defaultUser();
+    return JSON.stringify(this.getUserFromUsername(username))!==JSON.stringify(this.defaultUser());
   }
   public existsEmail(email:string):boolean{
     let currentList=this.getUsers();

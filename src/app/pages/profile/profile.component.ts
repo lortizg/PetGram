@@ -37,5 +37,8 @@ export class ProfileComponent implements OnInit {
     this.sessionManager.clearSession();
     this.router.navigateByUrl("/login");
   }
+  isMyProfile():boolean{
+    return this.user.id===this.sessionManager.getId();
+  }
 
 }

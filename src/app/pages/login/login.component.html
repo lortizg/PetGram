@@ -1,8 +1,9 @@
 <div id="loginContainer">
     <img id="appImg" src="/assets/images/icon.png">
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <input type="text" formControlName="username" placeholder="Username...">
-        <input type="text" formControlName="password" placeholder="Password...">
+    <form (ngSubmit)="login()">
+        <input type="text" [(ngModel)]="loginForm.username" [ngModelOptions]="{standalone: true}" placeholder="Username...">
+        <input type="password" [(ngModel)]="loginForm.password" [ngModelOptions]="{standalone: true}" placeholder="Password...">
+        <p *ngIf="error!==''">{{error}}</p>
         <button type="submit">Log in!</button>
     </form>
     <div id="register">
