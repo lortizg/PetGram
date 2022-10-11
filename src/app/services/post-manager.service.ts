@@ -43,6 +43,11 @@ export class PostManagerService {
     this.posts.push(newPost);
     this.updatePosts();
   }
+  removePost(id:number){
+    let index = this.posts.findIndex(x=>x.id===id);
+    this.posts.splice(index,1);
+    this.updatePosts();
+  }
 
   public likePost(postId:number,userId:number){
     let index=this.getIdPostFromId(postId);

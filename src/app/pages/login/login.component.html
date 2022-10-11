@@ -1,5 +1,6 @@
 <div id="loginContainer">
     <img id="appImg" src="/assets/images/icon.png">
+    <p id="logo">Petgram</p>
     <form (ngSubmit)="login()">
         <input type="text" [(ngModel)]="loginForm.username" [ngModelOptions]="{standalone: true}" placeholder="Username...">
         <input type="password" [(ngModel)]="loginForm.password" [ngModelOptions]="{standalone: true}" placeholder="Password...">

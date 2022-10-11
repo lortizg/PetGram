@@ -14,8 +14,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: burlywood;
+   // background-color: burlywood;
     flex-wrap: nowrap;
+    
+    max-width: 80%;
+    overflow: auto;
     //padding:  2% 0;
 }
 #stories > * {
@@ -36,7 +39,7 @@
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow:hidden;
 }
 a{
     
@@ -50,7 +53,7 @@ a{
     display: flex;
     background-color: burlywood;
     max-width: 100%;
-    overflow: auto;
+    //overflow: auto;
 }
 #MyStory{
     margin:1.5% 1% 0 1.5%;
@@ -66,4 +69,16 @@ a{
 }
 #alreadySeen{
     background:transparent;
+}
+
+#logo{
+    background-color: burlywood;
+    position: sticky;
+    padding: 1%;
+    top:0;
+    z-index:3;
+}
+#logo p{
+    font-family: cursive;
+    font-size: 8vw;
 }

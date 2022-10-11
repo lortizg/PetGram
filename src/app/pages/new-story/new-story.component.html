@@ -1,6 +1,18 @@
-<p>new-story works!</p>
+<a href="">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+</a>
+
+
 <form [formGroup]="newStory" (ngSubmit)="publish()">
-    <!-- <input type="text" formControlName="description" placeholder="Say something about your pic!"> -->
-    <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
+    <div>
+        <label for="image">
+            Select Image <br/>
+            <mat-icon>camera_alt</mat-icon>
+            <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
+            <br/>
+        </label>
+        <img [src]="newStory.value.image">
+    </div>
+    
     <button type="submit">Publish</button>
 </form>

@@ -1,6 +1,18 @@
-<p>new-post works!</p>
+<a href="">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+</a>
 <form [formGroup]="newPost" (submit)="publish()">
-    <input type="text" formControlName="description" placeholder="Say something about your pic!">
-    <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
+    <textarea formControlName="description" placeholder="Say something about your pic!"></textarea>
+    <div>
+        <label for="image">
+            Select Image <br/>
+            <mat-icon>camera_alt</mat-icon>
+            <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
+            <br/>
+        </label>
+        <img [src]="newPost.value.image">
+    </div>
+    
+
     <button type="submit">Publish</button>
 </form>

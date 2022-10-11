@@ -53,4 +53,11 @@ export class PostListComponent {
     }
     return result;
   }
+  isThisPostMine(postUserId:number){
+    return postUserId===this.sessionManager.getId();
+  }
+  deletePost(id:number){
+    this.postManager.removePost(id);
+    window.location.reload();
+  }
 }

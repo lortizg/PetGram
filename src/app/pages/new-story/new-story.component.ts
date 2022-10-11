@@ -8,7 +8,7 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 @Component({
   selector: 'app-new-story',
   templateUrl: './new-story.component.html',
-  styleUrls: ['./new-story.component.scss']
+  styleUrls: ['../new-post/new-post.component.scss']
 })
 export class NewStoryComponent implements OnInit {
 

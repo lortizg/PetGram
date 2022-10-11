@@ -4,6 +4,7 @@
         <a id="postHeader">
             <img [src]="post.user.pic">
             <p>{{post.user.username}}</p>
+            <mat-icon *ngIf="isThisPostMine(post.user.id)" (click)="deletePost(post.id)">delete_forever</mat-icon>
         </a>
         <div id="post">
             <img [src]="post.img">

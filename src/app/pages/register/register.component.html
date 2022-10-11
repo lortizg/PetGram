@@ -1,5 +1,6 @@
 <div id="registerContainer">
     <img id="appImg" src="/assets/images/icon.png">
+    <p id="logo">Petgram</p>
     <form (ngSubmit)="register()">
         <input type="text" [(ngModel)]="registerForm.username" [ngModelOptions]="{standalone: true}" placeholder="Username...">
         <p *ngIf="error.username!==''">{{error.username}}</p>
