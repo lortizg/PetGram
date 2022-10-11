@@ -14,6 +14,11 @@ export class StoriesComponent implements OnInit {
   user;
   stories;
   
+  timePerStory:number=6*100;
+  timeLeft: number = this.timePerStory;
+  interval:any;
+  onPause:boolean=false;
+
   slideIndex = 0;
   constructor(private storyManager:StoryMangerService,private userManager:UserManagerService,private route: ActivatedRoute, private sessionManager:SessionManagerService) {
     this.user=userManager.getUserFromUsername(route.snapshot.paramMap.get('username')||"");
@@ -21,6 +26,8 @@ export class StoriesComponent implements OnInit {
     let firstStoryNotSeen=storyManager.getFirstStoryNotSeen(this.stories,sessionManager.getId());
     this.slideIndex=firstStoryNotSeen!==-1?firstStoryNotSeen:0;
     storyManager.seeStory(this.stories[this.slideIndex].id,sessionManager.getId());
+
+    this.startTimer();
   }
 
   ngOnInit(): void {
@@ -28,10 +35,11 @@ export class StoriesComponent implements OnInit {
 
 // Next/previous controls
 changeStory(n:number) {
-  //console.log(this.slideIndex);
+  this.timeLeft=this.timePerStory;
   if(this.slideIndex+n<this.stories.length && this.slideIndex+n>=0){
     this.slideIndex += n;
     this.storyManager.seeStory(this.stories[this.slideIndex].id,this.sessionManager.getId());
+  
   } else if(this.slideIndex+n>=this.stories.length){
     let nextUser=this.storyManager.getNextUser(this.user.id);
     if(nextUser!==-1){
@@ -40,6 +48,7 @@ changeStory(n:number) {
     } else{
       window.location.href="";
     }
+  
   } else{
     let nextUser=this.storyManager.getPreviousUser(this.user.id);
     if(nextUser!==-1){
@@ -51,4 +60,23 @@ changeStory(n:number) {
   }
 }
 
+
+
+startTimer() {
+  this.onPause=false;
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = this.timePerStory;
+        this.changeStory(1);
+      }
+    },10)
+  }
+
+  pauseTimer() {
+    this.onPause=true;
+    clearInterval(this.interval);
+  }
+  
 }

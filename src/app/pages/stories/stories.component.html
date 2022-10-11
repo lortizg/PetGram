@@ -1,8 +1,10 @@
 <ol class="list">
     <li *ngFor="let story of stories; let i=index">
-        
         <div id="post" [ngStyle]="{'display': (i===slideIndex?'block':'none')}">
-            <img [src]="story.img">
+            <img (click)="onPause?startTimer():pauseTimer()" [src]="story.img">
+        </div>
+        <div id="lineTime">
+            <hr [style]="'width:'+(100-(timeLeft*100)/timePerStory)+'%'">
         </div>
         <a id="storyHeader" [ngStyle]="{'display': (i===slideIndex?'flex':'none')}">
             <img [src]="user.pic">
@@ -17,3 +19,4 @@
 <!-- Next and previous buttons -->
 <a class="prev" (click)="changeStory(-1)">&#10094;</a>
 <a class="next" (click)="changeStory(1)">&#10095;</a>
+<p>{{timeLeft}} Seconds Left....</p>

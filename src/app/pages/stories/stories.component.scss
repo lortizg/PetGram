@@ -48,7 +48,12 @@ li, #post, #post img{
     object-fit: cover;
 }
 
-
+hr{
+    border-top: 10px solid gray;
+    position: fixed;
+    top: 0;
+    transition: width 0.01s;
+}
 
 
 
