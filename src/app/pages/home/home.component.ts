@@ -29,14 +29,14 @@ export class HomeComponent implements OnInit {
         this.stories=storyManager.getStoriesDistinctUsers(aviableStories);
         this.storiesAlreadySeen=storyManager.getStoriesDistinctUsers(this.storiesAlreadySeen).filter(x=>!this.stories.includes(x));
       }
+
+      storyManager.setAviableStories([...this.stories,...this.storiesAlreadySeen]);
       this.stories=this.stories.map((x)=>{
           return {"user":userManager.getUserFromId(x)};
       });
       this.storiesAlreadySeen=this.storiesAlreadySeen.map((x)=>{
         return {"user":userManager.getUserFromId(x)};
       });
-
-      console.log(this.stories);
 
     }
   }

@@ -32,6 +32,22 @@ changeStory(n:number) {
   if(this.slideIndex+n<this.stories.length && this.slideIndex+n>=0){
     this.slideIndex += n;
     this.storyManager.seeStory(this.stories[this.slideIndex].id,this.sessionManager.getId());
+  } else if(this.slideIndex+n>=this.stories.length){
+    let nextUser=this.storyManager.getNextUser(this.user.id);
+    if(nextUser!==-1){
+      console.log(this.userManager.getUserFromId(nextUser).username);
+      window.location.href="/stories/"+this.userManager.getUserFromId(nextUser).username;
+    } else{
+      window.location.href="";
+    }
+  } else{
+    let nextUser=this.storyManager.getPreviousUser(this.user.id);
+    if(nextUser!==-1){
+      console.log(this.userManager.getUserFromId(nextUser).username);
+      window.location.href="/stories/"+this.userManager.getUserFromId(nextUser).username;
+    } else{
+      window.location.href="";
+    }
   }
 }
 

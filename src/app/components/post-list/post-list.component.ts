@@ -46,7 +46,7 @@ export class PostListComponent {
     let usersLiking=this.postManager.getLikesFromPost(postId);
     if(usersLiking.length>0){
       let showedUser=this.userManager.getUserFromId(usersLiking[0]);
-      result+=`Liked by <a href='/profile/${showedUser.username}'>${showedUser.username}</a>`;
+      result+=`Treated by <a href='/profile/${showedUser.username}'>${showedUser.username}</a>`;
       if(usersLiking.length>1){
         result+=` and ${usersLiking.length-1} more`
       }

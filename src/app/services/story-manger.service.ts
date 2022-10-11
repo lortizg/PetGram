@@ -7,6 +7,7 @@ import { IStory } from '../interfaces/istory';
 export class StoryMangerService {
 
   stories:Array<IStory>;
+  //aviableStories:Array<number>=[];
   constructor() {
     if(localStorage["users"]!==undefined){
       this.stories=this.getStories();
@@ -69,4 +70,28 @@ export class StoryMangerService {
     return stories.findIndex(x=>x.seenBy.indexOf(userId)===-1);
   }
 
+  setAviableStories(users:Array<number>){
+    localStorage.setItem("aviableStories",JSON.stringify([...users]));
+    //his.aviableStories=[...users];
+  }
+  getNextUser(currentUser:number):number{
+    let aviableStories=JSON.parse(localStorage.getItem("aviableStories")||"");
+    console.log(aviableStories);
+    let result=-1;
+    let current=aviableStories.indexOf(currentUser);
+    if(current!==aviableStories.length-1){
+      result=aviableStories[current+1];
+    }
+    return result;
+  }
+  getPreviousUser(currentUser:number){
+    let aviableStories=JSON.parse(localStorage.getItem("aviableStories")||"");
+    console.log(aviableStories);
+    let result=-1;
+    let current=aviableStories.indexOf(currentUser);
+    if(current!==0){
+      result=aviableStories[current-1];
+    }
+    return result;
+  }
 }

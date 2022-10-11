@@ -6,7 +6,10 @@
         </div>
         <a id="storyHeader" [ngStyle]="{'display': (i===slideIndex?'flex':'none')}">
             <img [src]="user.pic">
-            <p>{{user.username}}</p>
+            <p id="name">{{user.username}}</p>
+            <a href="">
+                <p id="back">x</p>
+            </a>
         </a>
         
     </li>

@@ -16,10 +16,25 @@ img{
     -webkit-mask-repeat: round;
     mask-repeat: no-repeat; 
 }
-#storyHeader p{
+#storyHeader #name{
     margin: auto 5%;
     font-weight: bold;
     font-size: 3.5vw;
+}
+#storyHeader a{
+    margin: auto 5%;
+    font-weight: bold;
+    font-size: 5vw;
+    text-decoration: none;
+    color:black;
+    background-color: white;
+    padding: 2%;
+    margin: auto;
+    position: fixed;
+    right: 0;
+}
+#back{
+    margin:auto;
 }
 ol{
     display: flex;
