@@ -16,3 +16,10 @@ img{
 p{
     font-family: Verdana;
 }
+@font-face {
+    font-family: 'SaintPeter'; /*a name to be used later*/
+    src: url('/assets/SaintPeter.ttf'); /*URL to font*/
+}
+#logo{
+    font-family: 'SaintPeter';
+}

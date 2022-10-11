@@ -2,6 +2,7 @@
     height: 90%;
     font-size: 3.5vw;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 #newPostIcon{
     position: fixed;
@@ -74,11 +75,13 @@ a{
 #logo{
     background-color: burlywood;
     position: sticky;
-    padding: 1%;
+    padding-left: 2%;
+    padding-top: 3%;
+    padding-bottom: 1%;
     top:0;
     z-index:3;
 }
 #logo p{
-    font-family: cursive;
     font-size: 8vw;
+    font-family: 'SaintPeter';
 }

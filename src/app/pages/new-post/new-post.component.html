@@ -1,8 +1,8 @@
 <a href="">
     <mat-icon>keyboard_arrow_left</mat-icon>
 </a>
-<form [formGroup]="newPost" (submit)="publish()">
-    <textarea formControlName="description" placeholder="Say something about your pic!"></textarea>
+<form (submit)="publish()">
+    <textarea [(ngModel)]="newPost.description" [ngModelOptions]="{standalone: true}" placeholder="Say something about your pic!"></textarea>
     <div>
         <label for="image">
             Select Image <br/>
@@ -10,7 +10,7 @@
             <input type="file" id="image" accept="image/*" (change)="newImage($event)" >
             <br/>
         </label>
-        <img [src]="newPost.value.image">
+        <img [src]="newPost.image">
     </div>
     
 

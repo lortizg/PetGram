@@ -1,19 +1,18 @@
 #loginContainer,#registerContainer{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
     align-items: center;
-    height: 80%;
-    padding: 20%;
     align-self: center;
+    min-width: 50%;
+    padding-top: 2rem;
 }
 #appImg{
     width: 50%;
 }
 form{
-    justify-content: center;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
  input{
     width: 100%;
@@ -39,5 +38,4 @@ button{
 #logo{
     font-size: 10vw;
     padding: 1%;
-    font-family: cursive;
 }

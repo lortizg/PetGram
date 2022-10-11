@@ -13,11 +13,12 @@
     padding: 2%;
 }
 #postHeader{
-    //margin-left: 2%;
-     display: flex;
-     flex-direction: row;
-     align-content: center;
-     background-color: burlywood;
+    flex-direction: row;
+    align-items: center;
+    background-color: burlywood;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    padding: 1% 2%;
 }
 #postHeader img{
     width: 13vw;
@@ -31,10 +32,10 @@
     font-weight: bold;
 }
 #like{
-   // width: 10vw;
     margin-left: 2%;
     margin-top: -4%;
     display:flex;
+    padding: 2%;
 }
 #like img{
     width: 10vw;
@@ -50,8 +51,7 @@
 }
 
 mat-icon{
-    float:right;
     color:white;
     transform: scale(1.8);
-    margin:auto auto auto 50%;
+    justify-self: end;
 }
